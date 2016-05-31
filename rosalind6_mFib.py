@@ -19,14 +19,22 @@ counts the number of each base pair
 """
 
 
-def rabbit_counter(month, kids):
+def rabbit_counter(month, life_months):
     n_pairs_minus_1 = 1
     n_pairs_minus_2 = 1
+    n_pairs_m_lm = [1, 1]
     current = 1
     for i in range(3, month + 1):
-        current = n_pairs_minus_1 + n_pairs_minus_2 * kids
-        n_pairs_minus_2 = n_pairs_minus_1
-        n_pairs_minus_1 = current
+        if len(n_pairs_m_lm) == life_months:
+            current = n_pairs_minus_1 + n_pairs_minus_2 - n_pairs_m_lm.pop(0)
+            n_pairs_m_lm.append(n_pairs_minus_1)
+            n_pairs_minus_2 = n_pairs_minus_1
+            n_pairs_minus_1 = current
+        else:
+            current = n_pairs_minus_1 + n_pairs_minus_2
+            n_pairs_m_lm.append(n_pairs_minus_1)
+            n_pairs_minus_2 = n_pairs_minus_1
+            n_pairs_minus_1 = current
     return current
 
 # If I am being run as a script...
