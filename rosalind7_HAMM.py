@@ -11,12 +11,12 @@ __author__ = "lteasnail"
 
 CLI_ARGS = """
 USAGE:
-alignment_summerise.py [options]
+rosalind7_HAMM.py [options]
 
 OPTIONS:
- -t STRING        String to count
+ -t FILE        A fasta file with two sequences of equal length
 
-counts the number of each base pair
+This script counts the number of differences between the two sequences.
 """
 
 
